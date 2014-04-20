@@ -1,3 +1,25 @@
+module Impulse = struct
+  include I0o1.Base
+
+  type generator = {
+    mutable is_first : bool;
+  }
+
+  let update self () =
+    let output =
+      if self.is_first then begin
+        self.is_first <- false;
+        1.0
+      end else
+        0.0
+    in
+    output
+
+  let init () =
+    let self = { is_first = true } in
+    { update = update self }
+end
+
 module Square = struct
   include I0o1.Base
 
