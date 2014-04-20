@@ -1,20 +1,27 @@
 module RC = struct
   include I1o1.Base
 
+  (* vo / vi = (a + b * z_1) / (c + b * z_1) *)
   type filter = {
-    r : float;
-    c : float;
     dt : float;
-    mutable vo : float;
+    a : float; b : float; c : float; d : float;
+    mutable vi_1 : float;
+    mutable vo_1 : float;
   }
 
   let update self vi =
-    let curr = (vi -. self.vo) /. self.r in
-    self.vo <- self.vo +. 1.0 /. self.c *. curr *. self.dt;
-    self.vo
+    let vo = 1.0 /. self.c *. (self.a *. vi +. self.b *. self.vi_1 -. self.d *. self.vo_1) in
+    self.vi_1 <- vi;
+    self.vo_1 <- vo;
+    vo
 
   let init ~r ~c ~dt =
-    let self = { r; c; dt; vo = 0.0 } in
+    let tau = r *. c in
+    let a = dt in
+    let b = dt in
+    let c = dt +. 2.0 *. tau in
+    let d = dt -. 2.0 *. tau in
+    let self = { dt; a; b; c; d; vi_1 = 0.0; vo_1 = 0.0 } in
     { update = update self }
 end
 
