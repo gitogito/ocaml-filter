@@ -1,7 +1,7 @@
 module Impulse = struct
   include I0o1.Base
 
-  type generator = {
+  type t' = {
     mutable is_first : bool;
   }
 
@@ -23,7 +23,7 @@ end
 module Square = struct
   include I0o1.Base
 
-  type generator = {
+  type t' = {
     n : int;
     mutable counter : int;
   }
@@ -48,7 +48,7 @@ end
 module Sine = struct
   include I0o1.Base
 
-  type generator = {
+  type t' = {
     n : int;
     mutable counter : int;
   }

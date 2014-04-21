@@ -7,7 +7,7 @@ end
 module Combine = struct
   include Base
 
-  type filter = {
+  type t' = {
     f1 : Base.t;
     f2 : Base.t;
   }

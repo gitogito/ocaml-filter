@@ -2,7 +2,7 @@ module RC = struct
   include I1o1.Base
 
   (* vo / vi = (a + b * z_1) / (c + b * z_1) *)
-  type filter = {
+  type t' = {
     dt : float;
     a : float; b : float; c : float; d : float;
     mutable vi_1 : float;
@@ -28,7 +28,7 @@ end
 module BT = struct
   include I1o1.Base
 
-  type filter = {
+  type t' = {
     btfilter : Btfilter.t;
   }
 
