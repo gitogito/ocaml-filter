@@ -28,10 +28,6 @@ end
 module BT = struct
   include I1o1.Base
 
-  type t' = {
-    btfilter : Btfilter.t;
-  }
-
   let update self vi =
     Btfilter.update self vi
 
