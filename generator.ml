@@ -20,6 +20,21 @@ module Impulse = struct
     { update = update self }
 end
 
+module Step = struct
+  include I0o1.Base
+
+  type t' = {
+    dummy : unit;
+  }
+
+  let update _ () =
+    1.0
+
+  let init () =
+    let self = { dummy = () } in
+    { update = update self }
+end
+
 module Square = struct
   include I0o1.Base
 
