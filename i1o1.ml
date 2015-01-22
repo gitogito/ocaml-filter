@@ -21,3 +21,24 @@ module Combine = struct
     let self = { f1; f2 } in
     { update = update self }
 end
+
+module Delay = struct
+  include Base
+
+  type t' = {
+    queue : float Queue.t;
+  }
+
+  let update self vi =
+    Queue.add vi self.queue;
+    Queue.take self.queue
+
+  let init n =
+    if n < 0 then raise (Invalid_argument "Delay.init");
+    let queue = Queue.create () in
+    for _ = 1 to n do
+      Queue.add 0.0 queue
+    done;
+    let self = { queue } in
+    { update = update self }
+end
