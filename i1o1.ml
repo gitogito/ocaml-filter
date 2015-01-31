@@ -1,20 +1,16 @@
-module Base = struct
-  type t = {
-    update : float -> float;
-  }
-end
+open Base
 
 module Combine = struct
-  include Base
+  include I1o1_base
 
   type t' = {
-    f1 : Base.t;
-    f2 : Base.t;
+    f1 : I1o1_base.t;
+    f2 : I1o1_base.t;
   }
 
   let update self vi =
-    let vo = self.f1.Base.update vi in
-    let vo = self.f2.Base.update vo in
+    let vo = self.f1.I1o1_base.update vi in
+    let vo = self.f2.I1o1_base.update vo in
     vo
 
   let init f1 f2 =
@@ -23,7 +19,7 @@ module Combine = struct
 end
 
 module Delay = struct
-  include Base
+  include I1o1_base
 
   type t' = {
     queue : float Queue.t;

@@ -1,5 +1,7 @@
+open Base
+
 module RC = struct
-  include I1o1.Base
+  include I1o1_base
 
   (* vo / vi = (a + b * z_1) / (c + b * z_1) *)
   type t' = {
@@ -26,7 +28,7 @@ module RC = struct
 end
 
 module BT = struct
-  include I1o1.Base
+  include I1o1_base
 
   let update self vi =
     Btfilter.update self vi

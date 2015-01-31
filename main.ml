@@ -1,4 +1,5 @@
 open Printf
+open Base
 
 let dt = 0.01
 let gen_n = Util.round (1.0 /. dt)
@@ -11,8 +12,8 @@ let rec sim generator filter n =
   if t > tmax then
     ()
   else begin
-    let vi = generator.I0o1.Base.update () in
-    let vo = filter.I1o1.Base.update vi in
+    let vi = generator.I0o1_base.update () in
+    let vo = filter.I1o1_base.update vi in
     printf "%g\t%g\t%g\n" t vi vo;
     sim generator filter (n + 1)
   end

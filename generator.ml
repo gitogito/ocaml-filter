@@ -1,5 +1,7 @@
+open Base
+
 module Impulse = struct
-  include I0o1.Base
+  include I0o1_base
 
   type t' = {
     mutable is_first : bool;
@@ -21,7 +23,7 @@ module Impulse = struct
 end
 
 module Step = struct
-  include I0o1.Base
+  include I0o1_base
 
   type t' = {
     dummy : unit;
@@ -36,7 +38,7 @@ module Step = struct
 end
 
 module Square = struct
-  include I0o1.Base
+  include I0o1_base
 
   type t' = {
     n : int;
@@ -61,7 +63,7 @@ module Square = struct
 end
 
 module Sine = struct
-  include I0o1.Base
+  include I0o1_base
 
   type t' = {
     n : int;

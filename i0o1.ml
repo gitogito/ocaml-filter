@@ -1,20 +1,16 @@
-module Base = struct
-  type t = {
-    update : unit -> float;
-  }
-end
+open Base
 
 module Multiplier = struct
-  include Base
+  include I0o1_base
 
   type t' = {
-    gen1 : Base.t;
-    gen2 : Base.t;
+    gen1 : I0o1_base.t;
+    gen2 : I0o1_base.t;
   }
 
   let update self () =
-    let vo1 = self.gen1.Base.update () in
-    let vo2 = self.gen1.Base.update () in
+    let vo1 = self.gen1.I0o1_base.update () in
+    let vo2 = self.gen1.I0o1_base.update () in
     vo1 *. vo2
 
   let init gen1 gen2 =
