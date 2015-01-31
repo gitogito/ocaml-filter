@@ -20,7 +20,7 @@ let rec sim generator filter n =
 let () =
   let gen1 = Generator.Sine.init gen_n in
   let gen2 = Generator.Sine.init gen_n in
-  let multi = I2o1.Multiplier.init gen1 gen2 in
+  let multi = I0o1.Multiplier.init gen1 gen2 in
   let filter =
     if Sys.argv.(1) = "a" then begin
       Filter.RC.init ~r ~c ~dt
